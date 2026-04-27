@@ -43,18 +43,22 @@ document.querySelector(".click").addEventListener("click", function(e) {
   form1.remove();
 
   // Second room
-  let form2 = document.createElement('form');
-  form2.className = 'h-screen w-screen flex items-center justify-center bg-cover bg-center';
-  form2.style.backgroundImage = "url('./image/valentineWebPageBc.jpg')";
-  form2.innerHTML = `
-  <div class="bg-white max-w-2xl w-full p-8 text-center rounded-lg shadow-lg shadow-red-400">
-    <h2 class="text-3xl font-bold text-pink-600 mb-6 shadow-lg rounded shadow-red-400">Will you be forever Valentine?<span class="animate-pulse inline-block"> 💞</span></h2>
-    <button id="yesBtn" class="bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg mr-4 ">Yes 💖</button>
+  // Second room
+let form2 = document.createElement('form');
+form2.className = 'h-screen w-screen flex items-center justify-center bg-cover bg-center';
+form2.style.backgroundImage = "url('./image/valentineWebPageBc.jpg')";
+form2.innerHTML = `
+  <div class="bg-white max-w-2xl w-full p-9 text-center rounded-lg shadow-lg shadow-red-500 min-h-[350px]">
+    <h2 class="text-3xl font-bold text-pink-600 mb-6 p-6 shadow-lg rounded-lg shadow-red-500">
+      Will you be forever Valentine?<span class="animate-pulse inline-block"> 💞</span>
+    </h2>
+    <button id="yesBtn" class="bg-green-500 text-white p-3 px-6 py-2 mt-3 rounded-lg shadow-lg mr-4">Yes 💖</button>
     <button id="noBtn" class="bg-gray-500 text-white px-6 py-2 rounded-lg shadow-lg">No 💔</button>
     <div id="result" class="mt-6 text-xl font-bold text-red-600"></div>
     <p class="footer italic text-sm text-purple-500 mt-8 min-h-[30px]"></p>
   </div>
-  `;
+`;
+
 
 
   body.appendChild(form2);
