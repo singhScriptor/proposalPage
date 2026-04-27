@@ -52,8 +52,8 @@ form2.innerHTML = `
     <h2 class="text-3xl font-bold text-pink-600 mb-6 p-6 shadow-lg rounded-lg shadow-red-500">
       Will you be forever Valentine?<span class="animate-pulse inline-block"> 💞</span>
     </h2>
-    <button id="yesBtn" class="bg-green-500 text-white p-3 px-6 py-2 mt-3 rounded-lg shadow-lg mr-4">Yes 💖</button>
-    <button id="noBtn" class="bg-gray-500 text-white px-6 py-2 rounded-lg shadow-lg">No 💔</button>
+    <button type="button" id="yesBtn" class="bg-green-500 text-white p-3 px-6 py-2 mt-3 rounded-lg shadow-lg mr-4">Yes 💖</button>
+    <button type="button" id="noBtn" class="bg-gray-500 text-white px-6 py-2 rounded-lg shadow-lg" >No 💔</button>
     <div id="result" class="mt-6 text-xl font-bold text-red-600"></div>
     <p class="footer italic text-sm text-purple-500 mt-8 min-h-[30px]"></p>
   </div>
