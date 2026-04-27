@@ -2,7 +2,8 @@
 let body = document.getElementsByTagName('body')[0];
 body.className = 'body bg-pink-500';
 
-let form1 = document.createElement('form');
+// CHANGE 1: Use a 'div' instead of a 'form' to prevent accidental page reloads
+let form1 = document.createElement('div'); 
 form1.className = 'form';
 body.appendChild(form1);
 
@@ -43,37 +44,35 @@ document.querySelector(".click").addEventListener("click", function(e) {
   form1.remove();
 
   // Second room
-  // Second room
-let form2 = document.createElement('form');
-form2.className = 'h-screen w-screen flex items-center justify-center bg-cover bg-center';
-form2.style.backgroundImage = "url('./image/valentineWebPageBc.jpg')";
-form2.innerHTML = `
-  <div class="bg-white max-w-2xl w-full p-9 text-center rounded-lg shadow-lg shadow-red-500 min-h-[350px]">
-    <h2 class="text-3xl font-bold text-pink-600 mb-6 p-6 shadow-lg rounded-lg shadow-red-500">
-      Will you be forever Valentine?<span class="animate-pulse inline-block"> 💞</span>
-    </h2>
-    <button type="button" id="yesBtn" class="bg-green-500 text-white p-3 px-6 py-2 mt-3 rounded-lg shadow-lg mr-4">Yes 💖</button>
-    <button type="button" id="noBtn" class="bg-gray-500 text-white px-6 py-2 rounded-lg shadow-lg" >No 💔</button>
-    <div id="result" class="mt-6 text-xl font-bold text-red-600"></div>
-    <p class="footer italic text-sm text-purple-500 mt-8 min-h-[30px]"></p>
-  </div>
-`;
-
-
+  // CHANGE 2: Use a 'div' instead of a 'form' here as well
+  let form2 = document.createElement('div'); 
+  form2.className = 'h-screen w-screen flex items-center justify-center bg-cover bg-center';
+  form2.style.backgroundImage = "url('./image/valentineWebPageBc.jpg')";
+  form2.innerHTML = `
+    <div class="bg-white max-w-2xl w-full p-9 text-center rounded-lg shadow-lg shadow-red-500 min-h-[350px]">
+      <h2 class="text-3xl font-bold text-pink-600 mb-6 p-6 shadow-lg rounded-lg shadow-red-500">
+        Will you be forever Valentine?<span class="animate-pulse inline-block"> 💞</span>
+      </h2>
+      <button type="button" id="yesBtn" class="bg-green-500 text-white p-3 px-6 py-2 mt-3 rounded-lg shadow-lg mr-4">Yes 💖</button>
+      <button type="button" id="noBtn" class="bg-gray-500 text-white px-6 py-2 rounded-lg shadow-lg" >No 💔</button>
+      <div id="result" class="mt-6 text-xl font-bold text-red-600"></div>
+      <p class="footer italic text-sm text-purple-500 mt-8 min-h-[30px]"></p>
+    </div>
+  `;
 
   body.appendChild(form2);
 
   // Typed.js footer animation
-var footerTyped = new Typed(".footer", {
-  strings: [
-    "Crafted with love & soul 💕",
-    "Forever yours, Dhiraj Singh 🌹"
-  ],
-  typeSpeed: 60,
-  backSpeed: 40,
-  loop: true,
-  showCursor: false
-});
+  var footerTyped = new Typed(".footer", {
+    strings: [
+      "Crafted with love & soul 💕",
+      "Forever yours, Dhiraj Singh 🌹"
+    ],
+    typeSpeed: 60,
+    backSpeed: 40,
+    loop: true,
+    showCursor: false
+  });
 
   // Yes button
   form2.querySelector("#yesBtn").addEventListener("click", function(e) {
@@ -93,15 +92,19 @@ var footerTyped = new Typed(".footer", {
   ];
   let msgIndex = 0;
 
-  noBtn.addEventListener("mouseover", function() {
+  // CHANGE 3: Create a single function to handle the dodging logic
+  const dodgeAction = function(e) {
+    e.preventDefault(); // Prevents mobile browsers from triggering default taps/clicks/zooms
     let x = Math.floor(Math.random() * 200) - 100;
     let y = Math.floor(Math.random() * 200) - 100;
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
 
     form2.querySelector("#result").innerText = messages[msgIndex];
     msgIndex = (msgIndex + 1) % messages.length;
-  });
+  };
+
+  // CHANGE 4: Bind the dodge logic to mouseover AND mobile touch/click events
+  noBtn.addEventListener("mouseover", dodgeAction);
+  noBtn.addEventListener("touchstart", dodgeAction, { passive: false }); 
+  noBtn.addEventListener("click", dodgeAction);
 });
-
-
-
