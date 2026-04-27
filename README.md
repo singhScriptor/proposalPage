@@ -1,6 +1,4 @@
-Here’s your README rewritten in a clean, correct format with the **direct Live Demo link** included properly:
 
-```markdown
 # Valentine Proposal Page 💖
 
 ## Live Demo
@@ -29,10 +27,3 @@ An interactive web project crafted with love, featuring animated text, playful b
    git clone https://github.com/singhScriptor/proposalPage
    ```
 
-
----
-
-Made with ❤️ by **Dhiraj Singh**
-```
-
----
